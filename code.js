@@ -1,6 +1,5 @@
 function createCanvas (newSize) {
     let size = 16;
-    let numberOfColumn = 16;
     if (newSize != undefined) {
         size = newSize;
     }
@@ -18,8 +17,9 @@ function createCanvas (newSize) {
             createRow.append(createColumn);
         }
     }
-    
+    changePixelSize(size);
     selectPixel();
+    
 }
 
 function selectPixel() {
@@ -29,7 +29,8 @@ function selectPixel() {
 
 function paintCanvas(pixel) {
     pixel.addEventListener("mouseover", function(){
-        pixel.setAttribute("style", "background-color:red;");
+        pixel.style.backgroundColor = "red";
+        // pixel.setAttribute("style", "background-color:red;");
     });
 
 }
@@ -40,6 +41,16 @@ function changeCanvasSize () {
         let newSize = prompt("How many pixels for width and height?");
         createCanvas(newSize);
     }
+}
+
+function changePixelSize (size) {
+    const pixel = document.querySelectorAll(".column");
+    let pixelSize = 480/size;
+    pixel.forEach((pixel) => {
+        pixel.style.width = `${pixelSize}px`;
+        pixel.style.height = `${pixelSize}px`;
+        // pixel.setAttribute("style", `width:${pixelSize}px; height:${pixelSize}px;`)
+    });
 }
 
 createCanvas();
