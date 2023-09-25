@@ -34,6 +34,10 @@ function paintCanvas(pixel) {
         pixel.addEventListener("mouseover", function(){
             pixel.style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0");
         });
+    } else if (mode === "eraser") {
+        pixel.addEventListener("mouseover", function(){
+            pixel.style.backgroundColor = "white";
+        });
     } else if (mode === "clearCanvas") {
         pixel.style.backgroundColor = "white";
     }
@@ -76,6 +80,8 @@ rainbowModeButton = document.querySelector("#rainbowMode");
 rainbowModeButton.addEventListener("mousedown", convertToId);
 normalModeButton = document.querySelector("#normalMode");
 normalModeButton.addEventListener("mousedown", convertToId);
+eraserButton = document.querySelector("#eraser");
+eraser.addEventListener("mousedown", convertToId);
 clearCanvasButton = document.querySelector("#clearCanvas");
 clearCanvasButton.addEventListener("mousedown", function(e) {
     mode = e.target.id;
