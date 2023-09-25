@@ -18,19 +18,27 @@ function createCanvas (newSize) {
         }
     }
     changePixelSize(size);
-    selectPixel();
     
 }
 
-function selectPixel() {
+function selectPixel(mode) {
     const pixel = document.querySelectorAll(".column");
     pixel.forEach(paintCanvas);
 }
 
 function paintCanvas(pixel) {
-    pixel.addEventListener("mouseover", function(){
-        pixel.style.backgroundColor = "red";
-    });
+    if (mode === "normalMode") {
+        pixel.addEventListener("mouseover", function(){
+            pixel.style.backgroundColor = "black";
+        });
+    } else if (mode === "rainbowMode") {
+        pixel.addEventListener("mouseover", function(){
+            pixel.style.backgroundColor = "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0");
+        });
+    } else if (mode === "clearCanvas") {
+        pixel.style.backgroundColor = "white";
+    }
+    
 
 }
 
@@ -57,5 +65,22 @@ function changePixelSize (size) {
     });
 }
 
+function convertToId(e) {
+    mode = e.target.id;
+    selectPixel(mode);
+}
+
 createCanvas();
 changeCanvasSize();
+
+
+let mode;
+rainbowModeButton = document.querySelector("#rainbowMode");
+rainbowModeButton.addEventListener("mousedown", convertToId);
+normalModeButton = document.querySelector("#normalMode");
+normalModeButton.addEventListener("mousedown", convertToId);
+clearCanvasButton = document.querySelector("#clearCanvas");
+clearCanvasButton.addEventListener("mousedown", function(e) {
+    mode = e.target.id;
+    selectPixel(mode);
+});
