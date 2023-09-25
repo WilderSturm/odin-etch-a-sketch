@@ -18,7 +18,6 @@ function createCanvas (newSize) {
         }
     }
     changePixelSize(size);
-    
 }
 
 function selectPixel(mode) {
@@ -38,8 +37,6 @@ function paintCanvas(pixel) {
     } else if (mode === "clearCanvas") {
         pixel.style.backgroundColor = "white";
     }
-    
-
 }
 
 function changeCanvasSize () {

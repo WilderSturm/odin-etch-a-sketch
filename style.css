@@ -1,3 +1,25 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    background-image: url("https://image.pbs.org/contentchannels/DQhaEaX-background-1U3qFyO.png?focalcrop=1200x630x50x10&format=auto");
+    background-size: 100%;
+    
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+
 #canvas {
     width: 480px;
     height: 480px;
@@ -5,6 +27,7 @@
     border-color: black;
     display: flex;
     flex-direction: column;
+    background-color: white;
 }
 
 .row {
@@ -14,4 +37,10 @@
 .column {
     height: 30px;
     width: 30px;
+}
+
+.canvasBox {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
 }
