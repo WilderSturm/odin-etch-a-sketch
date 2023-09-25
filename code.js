@@ -30,7 +30,6 @@ function selectPixel() {
 function paintCanvas(pixel) {
     pixel.addEventListener("mouseover", function(){
         pixel.style.backgroundColor = "red";
-        // pixel.setAttribute("style", "background-color:red;");
     });
 
 }
@@ -38,8 +37,14 @@ function paintCanvas(pixel) {
 function changeCanvasSize () {
     button = document.querySelector("#changeCanvasSize");
     button.onclick = function() {
-        let newSize = prompt("How many pixels for width and height?");
-        createCanvas(newSize);
+        let newSize = prompt("Choose canvas size. Max 100 pixels.");
+        if (newSize > 100) {
+            createCanvas(100);
+        } else if (newSize <= 0) {
+            createCanvas(1);
+        } else {
+            createCanvas(newSize);
+        }
     }
 }
 
@@ -49,7 +54,6 @@ function changePixelSize (size) {
     pixel.forEach((pixel) => {
         pixel.style.width = `${pixelSize}px`;
         pixel.style.height = `${pixelSize}px`;
-        // pixel.setAttribute("style", `width:${pixelSize}px; height:${pixelSize}px;`)
     });
 }
 
